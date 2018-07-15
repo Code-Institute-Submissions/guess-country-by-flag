@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Enter game as an existing user:</p>
+<form method="POST">
+    <input type="text" name="username" placeholder="username" maxlength="15" required>
+    {% if username_error %}
+    <p class="error">{{ username_error }}</p>
+    {% endif %}
+    <input type="text" name="password" placeholder="password" required>
+    {% if password_error %}
+    <p class="error">{{ password_error }}</p>
+    {% endif %}
+    <input type="submit" name="action" value="Enter game">
+    <p class="separate">or</p>
+</form>
+<a href="{{ url_for('signUp') }}" class="button"><span>Create new user</span></a>
+<a href="{{ url_for('index') }}" class="button-back"><span>Go back</span></a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Choose your username and password</p>
+{% if username_error %}
+<span class="error">{{ username_error }}</span>
+{% endif %}
+<form method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" placeholder="username" maxlength="15" required>
+    <label for="password">Password:</label>
+    <input type="text" name="password" id="password" placeholder="password" required>
+    <input type="submit" name="action" value="Create user">
+</form>
+<a href="{{ url_for('signIn') }}" class="button-back"><span>Go back</span></a>
+{% endblock %}
