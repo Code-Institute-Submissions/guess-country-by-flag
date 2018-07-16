@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Add players</p>
+<form id="players" method="POST">
+    <input type="text" name="username" placeholder="username" maxlength="15" required>
+    {% if username_error %}
+    <p class="error">{{ username_error }}</p>
+    {% endif %}
+    {% if number_of_players_error %}
+    <p class="error">{{ number_of_players_error }}</p>
+    {% endif %}
+    <button type="submit" name="username" id="add" class="icon-btn">
+      <i class="fas fa-plus"></i>
+    </button>
+    {% for player in player_list %}
+    {% if loop.index == 1 %}
+    <div id="blue" class="player">{{ player.username }}<button type="submit" name="0" id="remove" class="icon-btn" formnovalidate><i class="fas fa-minus"></i></button></div>
+    {% elif loop.index == 2 %}
+    <div id="red" class="player">{{ player.username }}<button type="submit" name="1" id="remove" class="icon-btn" formnovalidate><i class="fas fa-minus"></i></button></div>
+    {% elif loop.index == 3 %}
+    <div id="yellow" class="player">{{ player.username }}<button type="submit" name="2" id="remove" class="icon-btn" formnovalidate><i class="fas fa-minus"></i></button></div>
+    {% elif loop.index == 4 %}
+    <div id="green" class="player">{{ player.username }}<button type="submit" name="3" id="remove" class="icon-btn" formnovalidate><i class="fas fa-minus"></i></button></div>
+    {% elif loop.index == 5 %}
+    <div id="purple" class="player">{{ player.username }}<button type="submit" name="4" id="remove" class="icon-btn" formnovalidate><i class="fas fa-minus"></i></button></div>
+    {% endif %}
+    {% endfor %}
+    {% if player_list|length > 0 %}
+    
+    {% endif %}
+    <input type="submit" name="action" value="Enter game" formnovalidate>
+</form>
+<a href="{{ url_for('createRoom') }}" class="button-back"><span>Go back</span></a>
+    
+{% endblock %}
