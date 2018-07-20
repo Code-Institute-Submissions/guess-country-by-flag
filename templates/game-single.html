@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="form-single" method="POST">
+    <div class="header-single">
+        <p class="username-single">{{ username }}</p>
+        <button class="give-up-single">Give up</button>
+    </div>
+    
+    <div class="progress-single">
+        <h2 class="h2-single">Question {{ question_number }} of 20</h2>
+        <div class="progress-bar-single">
+            <div class="progress-bar-progressed-single"></div>
+        </div>
+    </div>
+    
+    <div class="score-single">
+        <p class="total-single">Score: {{ score }}</p>
+        <p class="points-single">Remaining points: {{ round_points }}</p>
+    </div>
+    
+    <div class="flag-field-single"><img src="{{ flag_url }}"></div>
+    <input type="textarea" class="textarea-single" name="answer"/>
+    <div class="buttons-single">
+        <button class="skip-single">Skip</button>
+        <button class="submit-single" >Submit</button>
+    </div>
+    <div class="incorrect-answers-single">
+        <h4 class="incorrect-single">Incorrect answer(s}</h4>
+        {% for answer in incorrect_answers %}
+        <p class="answers-single">{{ answer }}</p>
+        {% endfor %}
+    </div>
+</form>
+
+{% endblock %}
