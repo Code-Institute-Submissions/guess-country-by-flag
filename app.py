@@ -1,8 +1,12 @@
 import os
+import sys
 import json
 import random
 import time
 from flask import Flask, render_template, request, redirect, url_for 
+
+# sys.path.insert(0, os.path.realpath('./utils'))
+
 from utils import countries, files, game_single, misc, users, leaderboard_single
 
 
@@ -64,6 +68,7 @@ def signUp():
 def gameMenu(username):
     if request.method == "POST":
         if "play" in request.form:
+            game_single.set_game_duration_current(username)
             return redirect(url_for("gameSingle", username=username))
         elif "leaderboard" in request.form:
             return redirect(url_for("leaderboard", username=username))
@@ -129,12 +134,6 @@ def gameSingle(username):
     official_name = countries.return_value_for_key_in_country_object_of_index("countries", country_for_current_round, "name-official")
     common_name = countries.return_value_for_key_in_country_object_of_index("countries", country_for_current_round, "name-common")
     
-    
-    
-    if question_number == 1:
-        start_time = time.time()
-        game_single.set_game_duration(username, start_time)
-    
     if points == 0:
         game_single.increase_question_number(username)
         game_single.reset_incorrect_answers(username)
@@ -147,10 +146,11 @@ def gameSingle(username):
             answer = misc.answer_to_lowercase_then_titlecase(request.form["answer"])
             
             if question_number == 20 and (answer == official_name or answer == common_name):
-                end_time = time.time()
-                game_single.check_for_win(user_score, username)
-                game_single.set_game_duration(username, round(misc.calculate_game_duration(start_time, end_time, username), 2))
                 users.increase_user_score(username, points)
+                end_time = time.time()
+                start_time = game_single.extract_key_value_from_game_obj(username, "game_duration")
+                game_single.set_game_duration(username, misc.calculate_game_duration(start_time, end_time))
+                game_single.check_for_win(user_score, username)
                 player_leaderboard = leaderboard_single.create_leaderboard_player(username)
                 files.append_to_file(player_leaderboard, "leaderboard")
                 leaderboard_single.update_leaderboard("leaderboard")
@@ -160,7 +160,7 @@ def gameSingle(username):
                 if answer == official_name or answer == common_name:
                     game_single.increase_question_number(username)
                     users.increase_user_score(username, points)
-                    game_single.reset_incorrect_answers(username)
+                    game_single.reset_incorrect_answers (username)
                     game_single.reset_round_points(username)
                     return redirect(url_for("gameSingle", username=username))
                     
@@ -170,10 +170,26 @@ def gameSingle(username):
                     return redirect(url_for("gameSingle", username=username))
                     
         elif "give-up" in request.form or "play-again" in request.form:
-            game_single.set_win_state(username, "lost")
+            end_time = time.time()
+            start_time = game_single.extract_key_value_from_game_obj(username, "game_duration")
+            game_single.set_game_duration(username, misc.calculate_game_duration(start_time, end_time))
+            game_single.check_for_win(user_score, username)
+            player_leaderboard = leaderboard_single.create_leaderboard_player(username)
+            files.append_to_file(player_leaderboard, "leaderboard")
+            leaderboard_single.update_leaderboard("leaderboard")
             return redirect(url_for("leaderboard", username=username))
             
         elif "skip" in request.form:
+            if question_number == 20:
+                end_time = time.time()
+                start_time = game_single.extract_key_value_from_game_obj(username, "game_duration")
+                game_single.set_game_duration(username, misc.calculate_game_duration(start_time, end_time))
+                game_single.check_for_win(user_score, username)
+                player_leaderboard = leaderboard_single.create_leaderboard_player(username)
+                files.append_to_file(player_leaderboard, "leaderboard")
+                leaderboard_single.update_leaderboard("leaderboard")
+                return redirect(url_for("leaderboard", username=username))
+            else:
                 game_single.increase_question_number(username)
                 game_single.reset_incorrect_answers(username)
                 game_single.reset_round_points(username)
@@ -192,10 +208,12 @@ def gameSingle(username):
     
 @app.route("/leaderboard/<username>", methods=["GET", "POST"])
 def leaderboard(username):
+    
     top_ten = leaderboard_single.update_top_ten("leaderboard")
     win = game_single.extract_key_value_from_game_obj(username, "win")
     user_score = users.return_user_score(username)
-    time = leaderboard_single.return_user_game_duration(username, "leaderboard")
+    time = game_single.extract_key_value_from_game_obj(username, "game_duration")
+    
     
     game_single.reset_question_number(username)
     game_single.reset_incorrect_answers(username)
@@ -206,6 +224,7 @@ def leaderboard(username):
     if request.method == "POST":
         game_single.set_win_state(username, "not-won")
         if "play-again" in request.form:
+            game_single.set_game_duration_current(username)
             return redirect(url_for("gameSingle", username=username))
         elif "continue" in request.form:
             return redirect(url_for("leaderboard", username=username))

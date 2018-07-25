@@ -1,4 +1,5 @@
 import json
+import time
 import files, misc
 
 """ 
@@ -241,6 +242,32 @@ def set_game_duration(username, time):
             user["game"] = current_game
                     
     files.overwrite_file("users", data)
+    
+    
+""" 
+Set game duration to current time
+"""
+def set_game_duration_current(username):
+    data = files.read_data_file("users")
+    current_game = {}
+    
+    
+    for user in data:
+        if user["username"] == username:
+            for key, value in user.items():
+                if key == "game":
+                    current_game = value
+    
+    
+    current_game["game_duration"] = time.time()
+    
+    for user in data:
+        if user["username"] == username:
+            user["game"] = current_game
+                    
+    files.overwrite_file("users", data)
+    
+    
     
 """ 
 Update game object with new list of random countries

@@ -1,9 +1,4 @@
 import random
-import time
-import game_single
-
-
-
 
 
 """ Generate a list of a given amount of index numbers between 0 and 204 """
@@ -14,20 +9,19 @@ def generate_random_numbers(amount):
     
     return list_of_index_numbers
     
-""" Calculate game_duration """ 
-def calculate_game_duration(start_time, end_time, username):
+""" Calculate game_duration and round the result to two decimal places """ 
+def calculate_game_duration(start_time, end_time):
     elapsed_time = end_time - start_time
-    
-    return elapsed_time
+    elapsed_time_two_decimal = round(elapsed_time, 2)
+    return elapsed_time_two_decimal
 
 
-""" Convert user input to lowercase and then to titlecase """            
-def answer_to_lowercase_then_titlecase(user_input):
-    answer_unmodified = user_input
-    answer_to_lowercase = user_input.lower()
-    answer_to_titlecase = answer_to_lowercase.title()
+""" Convert string to lower and then title case """            
+def answer_to_lowercase_then_titlecase(string):
+    string_to_lowercase = string.lower()
+    string_to_titlecase = string_to_lowercase.title()
         
-    return answer_to_titlecase
+    return string_to_titlecase
                 
 
 
