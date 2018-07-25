@@ -3,13 +3,12 @@
 <form class="form-single" method="POST">
     <div class="header-single">
         <p class="username-single">{{ username }}</p>
-        <button class="give-up-single">Give up</button>
+        <button class="give-up-single" name="give-up" formnovalidate>Give up</button>
     </div>
-    
     <div class="progress-single">
         <h2 class="h2-single">Question {{ question_number }} of 20</h2>
         <div class="progress-bar-single">
-            <div class="progress-bar-progressed-single"></div>
+            <div class="progress-bar-progressed-single question{{ question_number}}"></div>
         </div>
     </div>
     
@@ -19,13 +18,13 @@
     </div>
     
     <div class="flag-field-single"><img src="{{ flag_url }}"></div>
-    <input type="textarea" class="textarea-single" name="answer"/>
+    <input type="textarea" class="textarea-single" name="answer" required/>
     <div class="buttons-single">
-        <button class="skip-single">Skip</button>
-        <button class="submit-single" >Submit</button>
+        <button class="skip-single" name="skip" formnovalidate>Skip</button>
+        <button class="submit-single" name="answer">Submit</button>
     </div>
     <div class="incorrect-answers-single">
-        <h4 class="incorrect-single">Incorrect answer(s}</h4>
+        <h4 class="incorrect-single">Incorrect answer(s)</h4>
         {% for answer in incorrect_answers %}
         <p class="answers-single">{{ answer }}</p>
         {% endfor %}

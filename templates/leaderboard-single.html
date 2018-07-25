@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="form-single" method="POST">
+    {% if win == "won" %}
+    <div class="win-screen">
+        <p class="won">Well done {{ username }}, you've won!</p>
+        <p class="final-score">You final score is {{ score }} and it took you {{ time }} seconds to complete the game</p>
+        <div class="buttons-win">
+            <button class="button-win again-single" name="play-again">Play again</button>
+            <button class="button-win leaderboard-single" name="continue">Continue</button>
+        </div>
+    </div>
+    {% elif win == "lost" %}
+    <div class="win-screen">
+        <p class="won">Better luck next time {{ username }}</p>
+        <p class="final-score">You final score is {{ score }} and you played the game for {{ time }} seconds</p>
+        <div class="buttons-win">
+            <button class="button-win again-single" name="play-again">Play again</button>
+            <button class="button-win leaderboard-single" name="continue">Continue</button>
+        </div>
+    </div>
+    {% endif %}
+    <div class="leaderboard-wrapper">
+        <div class="leaderboard-header">
+            <div class="col one"><p class="leaderboard-p">Rank</p></div>
+            <div class="col two"><p class="leaderboard-p">Players</p></div>
+            <div class="col three"><p class="leaderboard-p">Score</p></div>
+        </div>
+        {% for player in top_ten %}
+            {% if loop.index % 2 != 0 %}
+                {% if player.username == username %}
+                <div class="player-field highlight">
+                    <div class="col one"><p class="leaderboard-p">{{ player.rank }}</p></div>
+                    <div class="col two"><p class="leaderboard-p">{{ player.username }}</p></div>
+                    <div class="col three"><p class="leaderboard-p">{{ player.score }}</p></div>
+                </div>
+                {% else %}
+                <div class="player-field">
+                    <div class="col one"><p class="leaderboard-p">{{ player.rank }}</p></div>
+                    <div class="col two"><p class="leaderboard-p">{{ player.username }}</p></div>
+                    <div class="col three"><p class="leaderboard-p">{{ player.score }}</p></div>
+                </div>
+                {% endif %}
+            {% else %}
+                {% if player.username == username %}
+                <div class="player-field light highlight">
+                    <div class="col one"><p class="leaderboard-p">{{ player.rank }}</p></div>
+                    <div class="col two"><p class="leaderboard-p">{{ player.username }}</p></div>
+                    <div class="col three"><p class="leaderboard-p">{{ player.score }}</p></div>
+                </div>
+                {% else %}
+                <div class="player-field light">
+                    <div class="col one"><p class="leaderboard-p">{{ player.rank }}</p></div>
+                    <div class="col two"><p class="leaderboard-p">{{ player.username }}</p></div>
+                    <div class="col three"><p class="leaderboard-p">{{ player.score }}</p></div>
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('gameMenu', username=username) }}" class="button"><span>Back to menu</span></a>
+</form>
+{% endblock %}
+
