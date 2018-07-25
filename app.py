@@ -5,8 +5,6 @@ import random
 import time
 from flask import Flask, render_template, request, redirect, url_for 
 
-# sys.path.insert(0, os.path.realpath('./utils'))
-
 from utils import countries, files, game_single, misc, users, leaderboard_single
 
 

@@ -1,6 +1,6 @@
 import json
 import time
-import files, misc
+from utils import files, misc
 
 """ 
 Create unique game object for a user 

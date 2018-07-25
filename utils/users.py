@@ -1,5 +1,5 @@
 import json
-import files
+from utils import files
 
 """
 Create user object with given values for username, passowrd, score and game
