@@ -11,12 +11,19 @@
 </head>
 
 <body>
-    <div class="container">
-        <a href="{{ url_for('index') }}">Guess The Flag</a>
-        <hr class="underline">
-        {% block content %}
+    <div class="container container-single">
+        <div class="column">
+            <a class="a-single" href="{{ url_for('index') }}">Guess The Flag</a>
+            <hr class="underline ht-single">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% block column %}
+        {% block column_content %}
+        {% endblock %}
         {% endblock %}
     </div>
+    
 
 </body>
 
