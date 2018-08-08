@@ -7,7 +7,7 @@ Create unique game object for a user
 """
 def create_game_object():
     game = {
-        "countries": misc.generate_random_numbers(20),
+        "countries": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
         "incorrect_answers": [],
         "question_number": 1,
         "points": 5,
@@ -285,6 +285,7 @@ def generate_new_list_of_random_countries(username):
     
     
     current_game["countries"] = misc.generate_random_numbers(20)
+
     
     for user in data:
         if user["username"] == username:
