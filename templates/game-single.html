@@ -1,34 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<form class="form-single" method="POST">
-    <div class="header-single">
-        <p class="username-single">{{ username }}</p>
-        <button class="give-up-single" name="give-up" formnovalidate>Give up</button>
-    </div>
-    <div class="progress-single">
-        <h2 class="h2-single">Question {{ question_number }} of 20</h2>
-        <div class="progress-bar-single">
-            <div class="progress-bar-progressed-single question{{ question_number}}"></div>
+    <form class="game" method="POST">
+        <div class="row one">
+            <div class="game_header">
+                <h2 class="count">Question {{ question_number }} of 20</h2>
+            </div>
+            <div class="game_progress">
+                <div class="game_progress_row">
+                    <p class="username">{{ username }} is playing...</p>
+                    <button class="give_up" name="give-up" formnovalidate>Give up</button>
+                </div>
+                <div class="progress_bar">
+                    <div class="progressed question{{ question_number}}"></div>
+                </div>
+            </div>
+            <div class="game_score">
+                <p class="score">Score: {{ score }}</p>
+                <p class="points">Remaining points: {{ round_points }}</p>
+            </div>
         </div>
-    </div>
-    
-    <div class="score-single">
-        <p class="total-single">Score: {{ score }}</p>
-        <p class="points-single">Remaining points: {{ round_points }}</p>
-    </div>
-    
-    <div class="flag-field-single"><img src="{{ flag_url }}"></div>
-    <input type="textarea" class="textarea-single" name="answer" required/>
-    <div class="buttons-single">
-        <button class="skip-single" name="skip" formnovalidate>Skip</button>
-        <button class="submit-single" name="answer">Submit</button>
-    </div>
-    <div class="incorrect-answers-single">
-        <h4 class="incorrect-single">Incorrect answer(s)</h4>
-        {% for answer in incorrect_answers %}
-        <p class="answers-single">{{ answer }}</p>
-        {% endfor %}
-    </div>
-</form>
-
+        <img src="{{ flag_url }}">
+        <div class="row two">
+            <input type="textarea" class="answer_field" name="answer" required/>
+            <div class="game_buttons">
+                <button class="skip" name="skip" formnovalidate>Skip</button>
+                <button class="submit" name="answer">Submit</button>
+            </div>
+            {% if incorrect_answers|length > 0 %}
+                <div class="incorrect_answers">
+                    <h4 class="heading">Incorrect answer(s)</h4>
+                    {% for answer in incorrect_answers %}
+                        <p class="answer">{{ answer }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </form>
 {% endblock %}

@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>Enter name of your game:</p>
-<form method="POST">
-    <input type="text" name="game_name" placeholder="game name" maxlength="30" required>
-    <input type="submit" name="action" value="Submit">
-</form>
-<a href="{{ url_for('index') }}" class="button-back"><span>Go back</span></a>
+    <form class="nav game_create_room" method="POST">
+        {% include "title.html" %}
+        <p class="info">Enter name of your game:</p>
+        {% if game_name_error %}
+            <p class="error">{{ game_name_error }}</p>
+        {% endif %}
+        <input class="input_field" type="text" name="game_name" placeholder="game name" maxlength="30" required>
+        <input class="input_button"type="submit" name="action" value="Submit">
+        <a href="{{ url_for('index') }}" class="button_back"><span class="button_text">Go back</span></a>
+    </form>
 {% endblock %}

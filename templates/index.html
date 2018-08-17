@@ -1,7 +1,8 @@
 {% extends 'base.html' %} 
 {% block content %}
-<form method="post">
-    <input type="submit" name="action" value="Play alone">
-    <input type="submit" name="action" value="Play with friends" disabled>
+<form class="nav game_mode_select" method="post">
+    {% include "title.html" %}
+    <input class="input_button" type="submit" name="action" value="Play alone">
+    <input class="input_button" type="submit" name="action" value="Play with friends">
 </form>
 {% endblock %}

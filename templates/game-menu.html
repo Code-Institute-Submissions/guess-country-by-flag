@@ -1,8 +1,9 @@
 {% extends 'base.html' %} 
 {% block content %}
-<form method="post">
-    <input type="submit" name="play" value="Play game">
-    <input type="submit" name="leaderboard" value="Go to leaderboards">
-    <input type="submit" name="mode-selection" value="Log out">
-</form>
+    <form class="nav game_menu" method="post">
+        {% include "title.html" %}
+        <input class="input_button" type="submit" name="play" value="Play game">
+        <input class="input_button" type="submit" name="leaderboard" value="Go to leaderboards">
+        <input class="input_button" type="submit" name="mode-selection" value="Log out">
+    </form>
 {% endblock %}

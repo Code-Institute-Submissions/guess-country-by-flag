@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>Choose your username and password</p>
-{% if username_error %}
-<span class="error">{{ username_error }}</span>
-{% endif %}
-<form method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" placeholder="username" maxlength="15" required>
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" placeholder="password" required>
-    <input type="submit" name="action" value="Create user">
-</form>
-<a href="{{ url_for('signIn') }}" class="button-back"><span>Go back</span></a>
+    <form class=" nav game_sign_up" method="POST">
+        {% include "title.html" %}
+        <p class="info">Choose your username and password</p>
+        {% if username_error %}
+            <p class="error">{{ username_error }}</p>
+        {% endif %}
+        <input class="input_field" type="text" name="username" id="username" placeholder="username" maxlength="15" required>
+        <input class="input_field" type="password" name="password" id="password" placeholder="password" required>
+        <input class="input_button" type="submit" name="action" value="Create user">
+        <a href="{{ url_for('signIn') }}" class="button_back"><span class="button_text">Go back</span></a>
+    </form>
 {% endblock %}

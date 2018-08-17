@@ -1,0 +1,86 @@
+@import "variables";
+
+@mixin btn($background-color) {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: $background-color;
+    box-shadow: $button_shadow;
+    border: none;
+}
+
+@mixin btn_size($height) {
+    width: 90%;
+    max-width: 360px;
+    height: $height;
+}
+
+button {
+    color: $white;
+    font-size: 1em;
+    box-shadow: $button_shadow;
+    
+    &.button {
+        @include btn($blue);
+        @include btn_size(35px);
+    }
+    
+    &.give_up {
+        border: none;
+        width: 100px;
+        height: 30px;
+        background-color: $red;
+        font-weight: bold;
+    }
+}
+
+a.button_back {
+    @include btn($orange);
+    @include btn_size(30px);
+    margin-top: 30px;
+}
+
+.game_buttons {
+    button {
+        height: 30px;
+        border: none;
+        font-weight: bold;
+    }
+    
+    .skip {
+        width: 80px;
+        background-color: $green;
+    }
+                    
+    .submit {
+        width: 100px;
+        background-color: $blue;
+    }
+}
+
+.leaderboard {
+    .button_back {
+        width: 100%;
+        margin: 30px auto;
+        
+        @media only screen and (min-width: 1025px) {
+            margin-bottom: 0;
+        }
+    }
+    
+    .buttons button {
+        @include btn($blue);
+        min: {
+            width: 280px;
+            height: 30px;
+        }
+        margin-bottom: 15px;
+    }
+}
+
+
+.button_text {
+    color: $white;
+    align-self: center
+}

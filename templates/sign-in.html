@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>Enter game as an existing user:</p>
-<form method="POST">
-    <input type="text" name="username" placeholder="username" maxlength="15" required>
-    {% if username_error %}
-    <p class="error">{{ username_error }}</p>
-    {% endif %}
-    <input type="password" name="password" placeholder="password" required>
-    {% if password_error %}
-    <p class="error">{{ password_error }}</p>
-    {% endif %}
-    <input type="submit" name="action" value="Enter game">
-    <p class="separate">or</p>
-</form>
-<a href="{{ url_for('signUp') }}" class="button"><span>Create new user</span></a>
-<a href="{{ url_for('index') }}" class="button-back"><span>Go back</span></a>
+    <form class="nav game_sign_in" method="POST">
+        {% include "title.html" %}
+        <p class="info">Enter game as an existing user:</p>
+        {% if password_error %}
+            <p class="error">{{ password_error }}</p>
+        {% elif username_error %}
+            <p class="error">{{ username_error }}</p>
+        {% endif %}
+        <input class="input_field" type="text" name="username" placeholder="username" maxlength="15" required>
+        <input class="input_field" type="password" name="password" placeholder="password" required>
+        <input class="input_button" type="submit" name="enter-game" value="Enter game">
+        <p class="separator">or</p>
+        <input class="input_button" type="submit" name="new-user" value="Create new user" formnovalidate>
+        <a href="{{ url_for('index') }}" class="button_back"><span class="button_text">Go back</span></a>
+    </form>
 {% endblock %}

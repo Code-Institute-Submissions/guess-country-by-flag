@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Guess The Flag</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}">
 </head>
-
 <body>
-    <div class="container container-single">
-        <div class="column">
-            <a class="a-single" href="{{ url_for('index') }}">Guess The Flag</a>
-            <hr class="underline ht-single">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
-    
-
+    <div class="background"></main>
+    {% block content %}
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/js/script.js"></script>
 </body>
-
 </html>

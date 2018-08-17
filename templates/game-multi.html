@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="game" method="POST">
+        {% if win %}
+            <div class="leaderboard_multi">
+                <h2 class="leaderboard_heading">Leaderboard</h2>
+                <div class="player_list">
+                    <div class="list_header">
+                        <p>Player</p>
+                        <p>Score</p>
+                    </div>
+                    {% for player in players %}
+                        {% if loop.index == 1 %}
+                            <div id="blue" class="player not-active">
+                                <p class="username">{{ player.username }}</p>
+                                <p class="points">{{ player.score }}</p>
+                            </div>
+                        {% elif loop.index == 2 %}
+                            <div id="green" class="player not-active">
+                                <p class="username">{{ player.username }}</p>
+                                <p class="points">{{ player.score }}</p>
+                            </div>
+                        {% elif loop.index == 3 %}
+                            <div id="yellow" class="player not-active">
+                                <p class="username">{{ player.username }}</p>
+                                <p class="points">{{ player.score }}</p>
+                            </div>
+                        {% elif loop.index == 4 %}
+                            <div id="red" class="player not-active">
+                                <p class="username">{{ player.username }}</p>
+                                <p class="points">{{ player.score }}</p>
+                            </div>
+                        {% elif loop.index == 5 %}
+                            <div id="purple" class="player not-active">
+                                <p class="username">{{ player.username }}</p>
+                                <p class="points">{{ player.score }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="row one">
+            <div class="game_header">
+                <h2 class="count">Round {{ round_number }} of 5</h2>
+                {% if turn_of_player == 0 %}
+                    <p id="blue_text" class="username">{{ current_player.username }}'s turn</p>
+                {% elif turn_of_player == 1 %}
+                    <p id="green_text" class="username">{{ current_player.username }}'s turn</p>
+                {% elif turn_of_player == 2 %}
+                    <p id="yellow_text" class="username">{{ current_player.username }}'s turn</p>
+                {% elif turn_of_player == 3 %}
+                    <p id="red_text" class="username">{{ current_player.username }}'s turn</p>
+                {% elif turn_of_player == 4 %}
+                    <p id="purple_text" class="username">{{ current_player.username }}'s turn</p>
+                {% else %}
+                    <p id="white_text" class="username">{{ current_player.username }}'s turn</p>
+                {% endif %}
+            </div>
+            <div class="game_progress">
+                <div class="game_progress_row">
+                    <div class="players">
+                        {% for player in players %}
+                            {% if loop.index == 1 %}
+                                {% if turn_of_player == 0 %}
+                                    <div id="blue" class="player_block"></div>
+                                {% else %}
+                                    <div id="not_active" class="player_block"></div>
+                                {% endif %}
+                            {% elif loop.index == 2 %}
+                                {% if turn_of_player == 1 %}
+                                    <div id="green" class="player_block"></div>
+                                {% else %}
+                                    <div id="not_active" class="player_block"></div>
+                                {% endif %}
+                            {% elif loop.index == 3 %}
+                                {% if turn_of_player == 2 %}
+                                    <div id="yellow" class="player_block"></div>
+                                {% else %}
+                                    <div id="not_active" class="player_block"></div>
+                                {% endif %}
+                            {% elif loop.index == 4 %}
+                                {% if turn_of_player == 3 %}
+                                    <div id="red" class="player_block"></div>
+                                {% else %}
+                                    <div id="not_active" class="player_block"></div>
+                                {% endif %}
+                            {% elif loop.index == 5 %}
+                                {% if turn_of_player == 4 %}
+                                    <div id="purple" class="player_block"></div>
+                                {% else %}
+                                    <div id="not_active" class="player_block"></div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="progress_bar">
+                    <div class="progressed round{{ round_number }}"></div>
+                </div>
+            </div>
+            <div class="game_score">
+                {% if turn_of_player == 0 %}
+                    <p id="blue_text" class="score">Score: {{ player_score }}</p>
+                {% elif turn_of_player == 1 %}
+                    <p id="green_text" class="score">Score: {{ player_score }}</p>
+                {% elif turn_of_player == 2 %}
+                    <p id="yellow_text" class="score">Score: {{ player_score }}</p>
+                {% elif turn_of_player == 3 %}
+                    <p id="red_text" class="score">Score: {{ player_score }}</p>
+                {% elif turn_of_player == 4 %}
+                    <p id="purple_text" class="score">Score: {{ player_score }}</p>
+                {% else %}
+                    <p class="score">Score: {{ player_score }}</p>
+                {% endif %}
+                <p class="points">Remaining points: {{ points }}</p>
+            </div>
+        </div>
+        <img src="{{ flag_url }}">
+        <div class="row two">
+            <input type="textarea" class="answer_field" name="answer" required/>
+            <div class="game_buttons">
+                <button class="skip" name="skip" formnovalidate>Skip</button>
+                <button class="submit" name="answer">Submit</button>
+            </div>
+            <div class="incorrect_answers">
+                {% if turn_of_player == 0 %}
+                    <h4 id="blue_text" class="heading">Incorrect answer(s)</h4>
+                {% elif turn_of_player == 1 %}
+                    <h4 id="green_text" class="heading">Incorrect answer(s)</h4>
+                {% elif turn_of_player == 2 %}
+                    <h4 id="yellow_text" class="heading">Incorrect answer(s)</h4>
+                {% elif turn_of_player == 3 %}
+                    <h4 id="red_text" class="heading">Incorrect answer(s)</h4>
+                {% elif turn_of_player == 4 %}
+                    <h4 id="purple_text" class="heading">Incorrect answer(s)</h4>
+                {% else %}
+                    <h4 class="heading">Incorrect answer(s)</h4>
+                {% endif %}
+                {% for answer in incorrect_answers %}
+                    <p class="answer">{{ answer }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+{% endblock %}

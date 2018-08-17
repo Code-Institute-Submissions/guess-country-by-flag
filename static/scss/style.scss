@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+@import "inputs", "variables", "buttons", "hover-effects";
+
+@mixin flex_row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+body {
+    background: {
+        image: url("../images/map.png");
+        repeat: no-repeat;
+        position: center 30px;
+        attachment: fixed;
+        size: 300%; 
+    }
+    
+    @media only screen and (min-width: 1025px) {
+        background-size: contain;
+    }
+    
+    @include flex_row;
+    justify-content: center;
+    font: {
+        family: 'Roboto', sans-serif;
+        size: 16px; 
+    }
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+// Base.html //
+.background {
+    background-color: $background;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    
+    @media only screen and (min-width: 1025px) {
+        overflow-y: hidden;
+        position: static;
+        margin: 25px 0;
+    }
+}
+
+// Index.html //
+
+.nav {
+    @include flex_column;
+    align-items: center;
+    padding: {
+        top: 25px;
+        bottom: 25px;
+    }
+    
+    @media only screen and (min-width: 1025px) {
+        width: 360px;
+        margin-top: 0;
+    }
+}
+
+
+.icon_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    margin-bottom: 25px;
+    border: none;
+    color: $white;
+    background: none;
+    box-shadow: none;
+}
+        
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+    width: 90%;
+    max-width: 360px;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+    background-color: $blue;
+            
+    & button {
+        @extend .icon_btn;
+    }
+                
+    & .icon_btn {
+        margin-bottom: 0;
+    }
+    
+    &:last-of-type {
+        margin-bottom: 30px;
+    }
+}
+
+@each $name, $color in $player_colors {
+    ##{$name} {
+        background-color: $color;
+    }
+}
+            
+.game_title {
+    align-self: center;
+    margin: {
+        top: 0;
+        bottom: 0; 
+    }
+    color: $white;
+    text-decoration: none;
+    font-size: 1.75em;
+}
+
+.title_underline {
+    width: 220px;
+    height: 1px;
+    margin: {
+        top: 15px;
+        bottom: 25px;
+    }
+    border: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(177, 177, 177, 0.85), rgba(0, 0, 0, 0));
+}
+
+// signin //
+
+.info {
+    color: $white;
+    max-width: 250px;
+    text-align: center;
+    margin: 0 0 25px 0;
+}
+
+.separator {
+    color: $white;
+}
+
+.error {
+    color: $red;
+    font: {
+        size: 0.875em;
+        weight: bold;
+    }
+    text-align: center;
+    max-width: 360px;
+    margin: {
+        top: 0;
+        bottom: 15px;
+    }
+}
+
+//Add players //
+.game_multi_add
+
+// Game single/Multi //
+
+.game,
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: {
+        top: 25px;
+        bottom: 25px;
+    }
+    color: $white;
+}
+    
+.row.one,
+.row.two {
+    width: 90%;
+}
+
+.row.two {
+    @include flex_column;
+}
+
+.game_header {
+    @include flex_column;
+    align-items: center;
+    font-weight: bold;
+            
+    h2 {
+        margin: {
+            top: 0;
+            bottom: 0;
+        }
+    }
+}
+
+.row > .game_progress {
+    flex-direction: column;
+}
+
+.game_progress_row {
+    @include flex_row;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 50px;
+    margin-bottom: 25px;
+            
+    p {
+        margin: 0;
+        color: $blue;
+    }
+}
+            
+.progress_bar {
+    height: 5px;
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    justify-content: flex-start;
+                
+    .progressed {
+        height: 100%;
+        width: 100px;
+        background-color: $orange;
+    }
+                
+    // generate classes "question(number of e.g. question1)"" from 1-20 with width % in incerements of 5 starting from 5
+    @for $question_num from 1 through 20 {
+        .question#{$question_num} { 
+            width: 5% * $question_num; 
+            
+        }
+    }
+    
+    @for $round_num from 1 through 5 {
+        .round#{$round_num} { 
+            width: 20% * $round_num; 
+            
+        }
+    }
+}
+
+.game_score {
+    @include flex_row;
+    justify-content: space-between;
+}
+
+img {
+    max-width: 90%;
+            
+    @media only screen and (min-width: 1025px) {
+        max-height: 50vh;
+    }
+}
+    
+.answer_field {
+    max-width: 100%;
+    margin: 25px 0;
+    box-shadow: none;
+}
+        
+.game_buttons {
+    @include flex_row;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    font: {
+        weight: bold;
+        size: 1.25em; 
+    }
+}
+
+.row.two > .incorrect_answers {
+    flex-direction: column;
+}
+        
+.incorrect_answers {
+    align-items: center;
+    align-self: center;
+    word-break: break-all;
+            
+    .heading {
+        margin-bottom: 10px;
+        font-size: 1.125em;
+        color: $red;
+    }
+            
+    .answer {
+        margin: 0;
+        margin-bottom: 15px;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+
+@each $name, $color in $player_colors {
+    ##{$name}_text {
+        color: $color;
+    }
+}
+
+#white_text {
+    color: $white;
+}
+
+.game_progress_row .players {
+    display: flex;
+    width: 100%;
+}
+
+.game_progress_row .players > .player_block {
+    width: 20%;
+    height: 30px;
+    margin-left: 10px;
+    
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+#not_active {
+    background-color: $white;
+}
+
+.leaderboard {
+    @include flex_column;
+    color: white;
+    width: 90%;
+    font-weight: bold;
+    margin: {
+        right: auto;
+        left: auto;
+    }
+    padding-top: 25px;
+    
+    @media only screen and (min-width: 1025px) {
+        width: 700px;
+        position: relative;
+        padding: 25px;
+    }
+    
+    h2 {
+        text-align: center;
+        margin: 0;
+    }
+}
+    
+.win_window {
+    @include flex_column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 150px;
+    background-color: rgba(27, 41, 41, 0.95);
+    text-align: center;
+        
+    @media only screen and (min-width: 1025px) {
+        justify-content: center;
+        background-color: rgba(27, 41, 41, 0.95);
+        position: absolute;
+        padding: 0;
+    }
+        
+    p:first-child {
+        font-size: 28px;
+        margin: 0;
+    }
+}
+        
+.buttons {
+    @include flex_column;
+    margin-top: 20px;
+}
+    
+.leaderboard_header {
+    @include flex_row;
+    height: 35px;
+    color: $background;
+    background-color: $white;
+    border-bottom: 2px solid $border;
+}
+    
+.col {
+    @include flex_row;
+    justify-content: flex-start;
+    align-items: center;
+        
+    &.one {
+        width: 80px;
+        justify-content: center;
+    }
+        
+    &.two {
+        width: 100%;
+        display: flex;
+        padding: {
+            left: 20px;
+            right: 0;
+        }
+        border-left: 2px solid $border;
+    }
+        
+    &.three {
+        width: 100px;
+        justify-content: center;
+        border-left: 2px solid $border;
+    }
+}
+    
+.player_field {
+    @include flex_row;
+    height: 35px;
+    color: $white;
+    background-color: transparent;
+    border-bottom: 2px solid $border;
+        
+    &.last {
+        border: none;
+    }
+    
+    &.highlight {
+        color: $white;
+        background-color: $highlight;
+    }
+}
+
+.leaderboard_multi {
+    display: none;
+}
+
+
+
+
+
+
+
