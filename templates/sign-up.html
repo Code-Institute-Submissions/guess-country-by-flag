@@ -4,6 +4,7 @@
         {% include "title.html" %}
         <p class="info">Choose your username and password</p>
         {% if username_error %}
+        <!-- Error to display in case player with chosen username already exists -->
             <p class="error">{{ username_error }}</p>
         {% endif %}
         <input class="input_field" type="text" name="username" id="username" placeholder="username" maxlength="15" required>

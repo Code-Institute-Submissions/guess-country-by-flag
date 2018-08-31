@@ -1,49 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form class="game" method="POST">
-        {% if win %}
-            <div class="leaderboard_multi">
-                <h2 class="leaderboard_heading">Leaderboard</h2>
-                <div class="player_list">
-                    <div class="list_header">
-                        <p>Player</p>
-                        <p>Score</p>
-                    </div>
+    <form class="game multi" method="POST">
+        {% if game_state == "ended" %}
+        <!-- if game has been been completed display this -->
+            <div class="win_window">
+                <h2 class="leaderboard_heading">Leaderboard {{number_of_players}}</h2>
+                <div class="leaderboard_header">
+                    <div class="col one"><p>Rank</p></div>
+                    <div class="col two"><p>Players</p></div>
+                    <div class="col three"><p>Score</p></div>
+                    <div class="col four"><p>Time</p></div>
+                </div>
                     {% for player in players %}
+                    <!-- Set different background color for each player on the leaderboard -->
                         {% if loop.index == 1 %}
-                            <div id="blue" class="player not-active">
-                                <p class="username">{{ player.username }}</p>
-                                <p class="points">{{ player.score }}</p>
+                            <div class="player_field">
+                                <div class="col one blue"><p>{{ player.rank }}</p></div>
+                                <div class="col two blue"><p>{{ player.username }}</p></div>
+                                <div class="col three blue"><p>{{ player.score }}</p></div>
+                                <div class="col four blue"><p>{{ times_list[loop.index - 1] }}</p></div>
                             </div>
                         {% elif loop.index == 2 %}
-                            <div id="green" class="player not-active">
-                                <p class="username">{{ player.username }}</p>
-                                <p class="points">{{ player.score }}</p>
+                            <div class="player_field">
+                                <div class="col one green"><p>{{ player.rank }}</p></div>
+                                <div class="col two green"><p>{{ player.username }}</p></div>
+                                <div class="col three green"><p>{{ player.score }}</p></div>
+                                <div class="col four green"><p>{{ times_list[loop.index - 1] }}</p></div>
                             </div>
                         {% elif loop.index == 3 %}
-                            <div id="yellow" class="player not-active">
-                                <p class="username">{{ player.username }}</p>
-                                <p class="points">{{ player.score }}</p>
+                            <div class="player_field">
+                                <div class="col one yellow"><p>{{ player.rank }}</p></div>
+                                <div class="col two yellow"><p>{{ player.username }}</p></div>
+                                <div class="col three yellow"><p>{{ player.score }}</p></div>
+                                <div class="col four yellow"><p>{{ times_list[loop.index - 1] }}</p></div>
                             </div>
                         {% elif loop.index == 4 %}
-                            <div id="red" class="player not-active">
-                                <p class="username">{{ player.username }}</p>
-                                <p class="points">{{ player.score }}</p>
+                            <div class="player_field">
+                                <div class="col one red"><p>{{ player.rank }}</p></div>
+                                <div class="col two red"><p>{{ player.username }}</p></div>
+                                <div class="col three red"><p>{{ player.score }}</p></div>
+                                <div class="col four red"><p>{{ times_list[loop.index - 1] }}</p></div>
                             </div>
                         {% elif loop.index == 5 %}
-                            <div id="purple" class="player not-active">
-                                <p class="username">{{ player.username }}</p>
-                                <p class="points">{{ player.score }}</p>
+                            <div class="player_field">
+                                <div class="col one purple"><p>{{ player.rank }}</p></div>
+                                <div class="col two purple"><p>{{ player.username }}</p></div>
+                                <div class="col three purple"><p>{{ player.score }}</p></div>
+                                <div class="col four purple"><p>{{ times_list[loop.index - 1] }}</p></div>
                             </div>
                         {% endif %}
                     {% endfor %}
+                <div class="buttons">
+                    <button class="play_again" name="play-again" formnovalidate>Play again</button>
+                    <button class="continue" name="continue" formnovalidate>Continue</button>
                 </div>
             </div>
-        {% endif %}
+        {% else %}
         <div class="row one">
             <div class="game_header">
-                <h2 class="count">Round {{ round_number }} of 5</h2>
+                <h2 class="count">{{number_of_players}} Round {{ round_number }} of 5</h2>
                 {% if turn_of_player == 0 %}
+                <!-- Set different text color for each player -->
                     <p id="blue_text" class="username">{{ current_player.username }}'s turn</p>
                 {% elif turn_of_player == 1 %}
                     <p id="green_text" class="username">{{ current_player.username }}'s turn</p>
@@ -61,6 +78,8 @@
                 <div class="game_progress_row">
                     <div class="players">
                         {% for player in players %}
+                        <!-- Set different background color for each div and highlight only the player
+                             who's turn it is -->
                             {% if loop.index == 1 %}
                                 {% if turn_of_player == 0 %}
                                     <div id="blue" class="player_block"></div>
@@ -101,6 +120,7 @@
             </div>
             <div class="game_score">
                 {% if turn_of_player == 0 %}
+                <!-- Set different text color for each player -->
                     <p id="blue_text" class="score">Score: {{ player_score }}</p>
                 {% elif turn_of_player == 1 %}
                     <p id="green_text" class="score">Score: {{ player_score }}</p>
@@ -120,27 +140,35 @@
         <div class="row two">
             <input type="textarea" class="answer_field" name="answer" required/>
             <div class="game_buttons">
-                <button class="skip" name="skip" formnovalidate>Skip</button>
-                <button class="submit" name="answer">Submit</button>
+                <button class="skip hvr-grow" name="skip" formnovalidate>Skip</button>
+                <button class="submit_answer hvr-grow" name="answer">Submit</button>
             </div>
             <div class="incorrect_answers">
-                {% if turn_of_player == 0 %}
-                    <h4 id="blue_text" class="heading">Incorrect answer(s)</h4>
-                {% elif turn_of_player == 1 %}
-                    <h4 id="green_text" class="heading">Incorrect answer(s)</h4>
-                {% elif turn_of_player == 2 %}
-                    <h4 id="yellow_text" class="heading">Incorrect answer(s)</h4>
-                {% elif turn_of_player == 3 %}
-                    <h4 id="red_text" class="heading">Incorrect answer(s)</h4>
-                {% elif turn_of_player == 4 %}
-                    <h4 id="purple_text" class="heading">Incorrect answer(s)</h4>
-                {% else %}
-                    <h4 class="heading">Incorrect answer(s)</h4>
+                {% if incorrect_answers|length > 0 %}
+                <!-- Only display if the list contains an element -->
+                    {% if turn_of_player == 0 %}
+                    <!-- Set different text color for each player -->
+                        <h4 id="blue_text" class="heading">Incorrect answer(s)</h4>
+                    {% elif turn_of_player == 1 %}
+                        <h4 id="green_text" class="heading">Incorrect answer(s)</h4>
+                    {% elif turn_of_player == 2 %}
+                        <h4 id="yellow_text" class="heading">Incorrect answer(s)</h4>
+                    {% elif turn_of_player == 3 %}
+                        <h4 id="red_text" class="heading">Incorrect answer(s)</h4>
+                    {% elif turn_of_player == 4 %}
+                        <h4 id="purple_text" class="heading">Incorrect answer(s)</h4>
+                    {% else %}
+                        <h4 class="heading">Incorrect answer(s)</h4>
+                    {% endif %}
                 {% endif %}
                 {% for answer in incorrect_answers %}
                     <p class="answer">{{ answer }}</p>
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </form>
+    {% if game_state == "ended" %}
+    <p>The leaderboard will only display in landscape orientation on mobile phones</p>
+    {% endif %}
 {% endblock %}

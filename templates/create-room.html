@@ -4,6 +4,7 @@
         {% include "title.html" %}
         <p class="info">Enter name of your game:</p>
         {% if game_name_error %}
+        <!-- error to display if game with submitted name already exists -->
             <p class="error">{{ game_name_error }}</p>
         {% endif %}
         <input class="input_field" type="text" name="game_name" placeholder="game name" maxlength="30" required>

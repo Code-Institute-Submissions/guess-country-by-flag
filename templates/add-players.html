@@ -4,15 +4,21 @@
     {% include "title.html" %}
     <p class="info">Add players</p>
     {% if username_error %}
+    <!-- Errors to display in case a player with given username already exists in the list,
+         if trying to add another player when 5 already exist and
+         if trying to start the game with no players -->
       <p class="error">{{ username_error }}</p>
-    {% elif number_of_players_error %}
-      <p class="error">{{ number_of_players_error }}</p>
+    {% elif max_number_of_players_error %}
+      <p class="error">{{ max_number_of_players_error }}</p>
+    {% elif no_players_error %}
+      <p class="error">{{ no_players_error }}</p>
     {% endif %}
       <input class="input_field" type="text" name="username" placeholder="username" maxlength="15" required>
       <button type="submit" name="username" id="add" class="icon_btn hvr-icon-grow">
         <i class="fas fa-plus hvr-icon"></i>
       </button>
       {% for player in player_list %}
+      <!-- Provide a different background color for each player -->
         {% if loop.index == 1 %}
           <div id="blue" class="player">
             {{ player.username }}
@@ -50,7 +56,7 @@
           </div>
         {% endif %}
       {% endfor %}
-      <input class="input_button hvr-fade" type="submit" name="action" value="Enter game" formnovalidate>
+      <input class="input_button" type="submit" name="action" value="Enter game" formnovalidate>
       <a href="{{ url_for('createRoom') }}" class="button_back"><span class="button_text">Go back</span></a>
   </form>
 {% endblock %}

@@ -4,6 +4,7 @@
         {% include "title.html" %}
         <p class="info">Enter game as an existing user:</p>
         {% if password_error %}
+        <!-- Erros to display in case player does not exist or password doesn't match -->
             <p class="error">{{ password_error }}</p>
         {% elif username_error %}
             <p class="error">{{ username_error }}</p>

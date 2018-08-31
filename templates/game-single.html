@@ -8,7 +8,7 @@
             <div class="game_progress">
                 <div class="game_progress_row">
                     <p class="username">{{ username }} is playing...</p>
-                    <button class="give_up" name="give-up" formnovalidate>Give up</button>
+                    <button class="give_up hvr-grow" name="give-up" formnovalidate>Give up</button>
                 </div>
                 <div class="progress_bar">
                     <div class="progressed question{{ question_number}}"></div>
@@ -20,13 +20,15 @@
             </div>
         </div>
         <img src="{{ flag_url }}">
+        
         <div class="row two">
-            <input type="textarea" class="answer_field" name="answer" required/>
+            <input type="textarea" class="answer_field" name="answer" autocomplete="off" required/>
             <div class="game_buttons">
-                <button class="skip" name="skip" formnovalidate>Skip</button>
-                <button class="submit" name="answer">Submit</button>
+                <button class="skip hvr-grow" name="skip" formnovalidate>Skip</button>
+                <button class="submit_answer hvr-grow" name="answer">Submit</button>
             </div>
             {% if incorrect_answers|length > 0 %}
+            <!-- Only display if list contains an element -->
                 <div class="incorrect_answers">
                     <h4 class="heading">Incorrect answer(s)</h4>
                     {% for answer in incorrect_answers %}

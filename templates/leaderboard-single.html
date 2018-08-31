@@ -4,53 +4,72 @@
         <h2 class="heading">Leaderboard</h2>
         <hr class="title_underline">
         {% if win == "won" %}
+        <!-- Window/message to display if player has won the game(i.e. score the maximum amount of points -->
             <div class="win_window">
-                <p>Well done {{ username }}, you've won!</p>
-                <p>You final score is {{ score }} and it took you {{ time }} seconds to complete the game</p>
-                <div class="buttons">
-                    <button class="play_again" name="play-again">Play again</button>
-                    <button class="continue" name="continue">Continue</button>
+                <div class="container">
+                    <p>Well done {{ username }}, you've won!</p>
+                    <p>Your final score is {{ score }} and it took you {{ time }} seconds to complete the game</p>
+                    <div class="buttons">
+                        <button class="play_again" name="play-again">Play again</button>
+                        <button class="continue" name="continue">Continue</button>
+                    </div>
                 </div>
             </div>
         {% elif win == "lost" %}
+        <!-- Window/message to display if player has completed the game but not won-->
             <div class="win_window">
-                <p>Better luck next time {{ username }}</p>
-                <p>You final score is {{ score }} and you played the game for {{ time }} seconds</p>
-                <div class="buttons">
-                    <button class="play_again" name="play-again">Play again</button>
-                    <button class="continue" name="continue">Continue</button>
+                <div class="container">
+                    <p>Better luck next time {{ username }}</p>
+                    <p>Your final score is {{ score }} and you played the game for {{ time }} seconds</p>
+                    <div class="buttons">
+                        <button class="play_again" name="play-again">Play again</button>
+                        <button class="continue" name="continue">Continue</button>
+                    </div>
                 </div>
             </div>
         {% endif %}
+        {% if top_ten|length == 0 %}
+        <!-- Display if the leaderboard contains no data -->
+            <p>No players on leaderboard yet...</p>
+        {% else %}
         <div class="leaderboard_header">
             <div class="col one"><p>Rank</p></div>
             <div class="col two"><p>Players</p></div>
             <div class="col three"><p>Score</p></div>
+            <div class="col four"><p>Time</p></div>
         </div>
-        {% for player in top_ten %}
-            {% if player.username == username %}
-                <div class="player_field highlight">
-                    <div class="col one"><p>{{ player.rank }}</p></div>
-                    <div class="col two"><p>{{ player.username }}</p></div>
-                    <div class="col three"><p>{{ player.score }}</p></div>
-                </div>
-            {% else %}
-                {% if loop.last %}
-                    <div class="player_field last">
+            {% for player in top_ten %}
+                {% if player.username == username %}
+                <!-- If player exists on the leaderboard and is currently on the page, highlight 
+                     that player -->
+                    <div class="player_field highlight">
                         <div class="col one"><p>{{ player.rank }}</p></div>
                         <div class="col two"><p>{{ player.username }}</p></div>
                         <div class="col three"><p>{{ player.score }}</p></div>
+                        <div class="col four"><p>{{ list_of_times[loop.index - 1] }}</p></div>
                     </div>
                 {% else %}
-                    <div class="player_field">
-                        <div class="col one"><p>{{ player.rank }}</p></div>
-                        <div class="col two"><p>{{ player.username }}</p></div>
-                        <div class="col three"><p>{{ player.score }}</p></div>
-                    </div>
+                    {% if loop.last %}
+                    <!-- Last player field has no bottom border -->
+                        <div class="player_field last">
+                            <div class="col one"><p>{{ player.rank }}</p></div>
+                            <div class="col two"><p>{{ player.username }}</p></div>
+                            <div class="col three"><p>{{ player.score }}</p></div>
+                            <div class="col four"><p>{{ list_of_times[loop.index - 1] }}</p></div>
+                        </div>
+                    {% else %}
+                        <div class="player_field">
+                            <div class="col one"><p>{{ player.rank }}</p></div>
+                            <div class="col two"><p>{{ player.username }}</p></div>
+                            <div class="col three"><p>{{ player.score }}</p></div>
+                            <div class="col four"><p>{{ list_of_times[loop.index - 1] }}</p></div>
+                        </div>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
         <a href="{{ url_for('gameMenu', username=username) }}" class="button_back"><span class="button_text">Back to menu</span></a>
     </form>
+    <p>The leaderboard will only display in landscape orientation on mobile phones</p>
 {% endblock %}
 
