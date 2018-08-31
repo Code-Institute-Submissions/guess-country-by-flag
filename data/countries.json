@@ -145,11 +145,6 @@
         "name-official": "Kingdom of Bhutan"
     },
     {
-        "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/1024px-Flag_of_Norway.svg.png",
-        "name-common": "Bouvet Island",
-        "name-official": "Bouvet Island"
-    },
-    {
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_Botswana.svg/1024px-Flag_of_Botswana.svg.png",
         "name-common": "Botswana",
         "name-official": "Republic of Botswana"
@@ -373,11 +368,6 @@
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/1024px-Flag_of_Guatemala.svg.png",
         "name-common": "Guatemala",
         "name-official": "Republic of Guatemala"
-    },
-    {
-        "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1024px-Flag_of_France.svg.png",
-        "name-common": "French Guiana",
-        "name-official": "Guiana"
     },
     {
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Flag_of_Guyana.svg/1024px-Flag_of_Guyana.svg.png",
@@ -760,11 +750,6 @@
         "name-official": "State of Qatar"
     },
     {
-        "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_R%C3%A9union.svg/1024px-Flag_of_R%C3%A9union.svg.png",
-        "name-common": "R\u00e9union",
-        "name-official": "R\u00e9union Island"
-    },
-    {
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flag_of_Romania.svg/1024px-Flag_of_Romania.svg.png",
         "name-common": "Romania",
         "name-official": "Romania"
@@ -798,11 +783,6 @@
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Singapore.svg/1024px-Flag_of_Singapore.svg.png",
         "name-common": "Singapore",
         "name-official": "Republic of Singapore"
-    },
-    {
-        "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/1024px-Flag_of_Norway.svg.png",
-        "name-common": "Svalbard and Jan Mayen",
-        "name-official": "Svalbard og Jan Mayen"
     },
     {
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Flag_of_the_Solomon_Islands.svg/1024px-Flag_of_the_Solomon_Islands.svg.png",
@@ -841,7 +821,7 @@
     },
     {
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Sao_Tome_and_Principe.svg/1024px-Flag_of_Sao_Tome_and_Principe.svg.png",
-        "name-common": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+        "name-common": "Sao Tome and Principe",
         "name-official": "Democratic Republic of S\u00e3o Tom\u00e9 and Pr\u00edncipe"
     },
     {
@@ -953,11 +933,6 @@
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/1024px-Flag_of_Ukraine.svg.png",
         "name-common": "Ukraine",
         "name-official": "Ukraine"
-    },
-    {
-        "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1024px-Flag_of_the_United_States.svg.png",
-        "name-common": "United States Minor Outlying Islands",
-        "name-official": "United States Minor Outlying Islands"
     },
     {
         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/1024px-Flag_of_Uruguay.svg.png",
