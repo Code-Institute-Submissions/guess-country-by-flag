@@ -14,23 +14,10 @@ input {
     box-shadow: $button_shadow;
 }
     
-.input_button {
-    color: $white;
-    background-color: $blue;
-        
-    &:first-of-type {
-        margin-bottom: 25px;
-    }
-        
-    &:nth-of-type(3) {
-        margin-top: 25px;
-    }
-}
-    
 .input_field {
     font-weight: normal;
     margin-bottom: 25px;
-    // box-shadow: none;
+    box-shadow: none;
 }
     
 .answer_field {

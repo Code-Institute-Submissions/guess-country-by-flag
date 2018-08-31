@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
 @import "inputs", "variables", "buttons", "hover-effects";
 
+/* Mixins */
 @mixin flex_row {
     display: flex;
     flex-direction: row;
@@ -11,7 +12,18 @@
     flex-direction: column;
 }
 
+@mixin leaderboard_orientation_size {
+    @include flex_column;
+    color: $white;    
+    width: 90%;
+    margin: {
+        right: auto;
+        left: auto;
+    }
+    padding-top: 25px;
+}
 
+/* General app styles */
 body {
     background: {
         image: url("../images/map.png");
@@ -35,7 +47,6 @@ body {
     margin: 0;
 }
 
-// Base.html //
 .background {
     background-color: $background;
     position: fixed;
@@ -52,8 +63,29 @@ body {
     }
 }
 
-// Index.html //
+.game_title {
+    align-self: center;
+    margin: {
+        top: 0;
+        bottom: 0; 
+    }
+    color: $white;
+    text-decoration: none;
+    font-size: 1.75em;
+}
 
+.title_underline {
+    width: 220px;
+    height: 1px;
+    margin: {
+        top: 15px;
+        bottom: 25px;
+    }
+    border: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(177, 177, 177, 0.85), rgba(0, 0, 0, 0));
+}
+
+/* For sign-in, sign-up, index, create-room, game-menu and add-players pages */
 .nav {
     @include flex_column;
     align-items: center;
@@ -68,20 +100,32 @@ body {
     }
 }
 
-
-.icon_btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 35px;
-    margin-bottom: 25px;
-    border: none;
+.separator {
     color: $white;
-    background: none;
-    box-shadow: none;
 }
-        
+
+.info {
+    color: $white;
+    max-width: 250px;
+    text-align: center;
+    margin: 0 0 25px 0;
+}
+
+.error {
+    color: $red;
+    font: {
+        size: 0.875em;
+        weight: bold;
+    }
+    text-align: center;
+    max-width: 360px;
+    margin: {
+        top: 0;
+        bottom: 15px;
+    }
+}
+
+/* add-players page */       
 .player {
     display: flex;
     align-items: center;
@@ -111,66 +155,13 @@ body {
 }
 
 @each $name, $color in $player_colors {
+    /* Create id selectors for each color for game-multi and add-players pages */
     ##{$name} {
         background-color: $color;
     }
 }
-            
-.game_title {
-    align-self: center;
-    margin: {
-        top: 0;
-        bottom: 0; 
-    }
-    color: $white;
-    text-decoration: none;
-    font-size: 1.75em;
-}
 
-.title_underline {
-    width: 220px;
-    height: 1px;
-    margin: {
-        top: 15px;
-        bottom: 25px;
-    }
-    border: 0;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(177, 177, 177, 0.85), rgba(0, 0, 0, 0));
-}
-
-// signin //
-
-.info {
-    color: $white;
-    max-width: 250px;
-    text-align: center;
-    margin: 0 0 25px 0;
-}
-
-.separator {
-    color: $white;
-}
-
-.error {
-    color: $red;
-    font: {
-        size: 0.875em;
-        weight: bold;
-    }
-    text-align: center;
-    max-width: 360px;
-    margin: {
-        top: 0;
-        bottom: 15px;
-    }
-}
-
-//Add players //
-.game_multi_add
-
-// Game single/Multi //
-
-.game,
+/* Common styles for game-single and game-multi */
 .game {
     display: flex;
     flex-direction: column;
@@ -180,6 +171,10 @@ body {
         bottom: 25px;
     }
     color: $white;
+    
+    @media only screen and (min-width: 1025px) {
+        position: relative;
+    }
 }
     
 .row.one,
@@ -234,18 +229,16 @@ body {
         background-color: $orange;
     }
                 
-    // generate classes "question(number of e.g. question1)"" from 1-20 with width % in incerements of 5 starting from 5
+    // generate classes for progress bar to emulate it progressing with each question/round
     @for $question_num from 1 through 20 {
         .question#{$question_num} { 
             width: 5% * $question_num; 
-            
         }
     }
     
     @for $round_num from 1 through 5 {
         .round#{$round_num} { 
             width: 20% * $round_num; 
-            
         }
     }
 }
@@ -281,7 +274,7 @@ img {
 }
 
 .row.two > .incorrect_answers {
-    flex-direction: column;
+    @include flex_column;
 }
         
 .incorrect_answers {
@@ -304,6 +297,7 @@ img {
 }
 
 @each $name, $color in $player_colors {
+    /* Generate id selectors for different colors for game-multi page */
     ##{$name}_text {
         color: $color;
     }
@@ -315,6 +309,7 @@ img {
 
 .game_progress_row .players {
     display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -332,29 +327,66 @@ img {
     background-color: $white;
 }
 
-.leaderboard {
-    @include flex_column;
-    color: white;
-    width: 90%;
-    font-weight: bold;
-    margin: {
-        right: auto;
-        left: auto;
+/* game-multi specific styles */
+.multi {
+    > .win_window {
+        background-color: transparent;
+        
+        @media only screen and (orientation: portrait) {
+            display: none;
+        }
+        
+        @media only screen and (orientation: landscape) {
+            display: flex;
+        }
+        
+        @media only screen and (min-width: 640px) {
+            display: flex;
+        }
+        @media only screen and (min-width: 1025px) {
+            justify-content: center;
+            position: inherit;
+            width: 700px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: {
+                top: -25px;
+                bottom: -15px;
+            }
+        }
     }
-    padding-top: 25px;
-    
-    @media only screen and (min-width: 1025px) {
-        width: 700px;
-        position: relative;
-        padding: 25px;
-    }
-    
-    h2 {
-        text-align: center;
-        margin: 0;
+    & ~ p {
+        @media only screen and (orientation: portrait) {
+            display: inherit;
+            color: $white;
+            text-align: center;
+            width: 90%;
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            right: 0;
+            bottom: 0;
+            background: {
+                image: url(http://cdn.3dvista.com/kolter-plan-b/media/rotate.gif);
+                size: contain;
+                repeat: no-repeat;
+                position-y: 50%;
+            }
+        }
+        
+        @media only screen and (orientation: landscape) {
+            display: none;
+        }
+        
+        @media only screen and (min-width: 640px) {  
+            display: none;
+        }
     }
 }
-    
+
+/* Styles for window shown after a game has been completed
+   For game-multi and leaderboard-single
+*/
 .win_window {
     @include flex_column;
     align-items: center;
@@ -363,31 +395,110 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-    padding-top: 150px;
-    background-color: rgba(27, 41, 41, 0.95);
     text-align: center;
-        
-    @media only screen and (min-width: 1025px) {
-        justify-content: center;
-        background-color: rgba(27, 41, 41, 0.95);
+    font-weight: bold;
+    background-color: $background;
+    
+    .container {
         position: absolute;
-        padding: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
-        
     p:first-child {
-        font-size: 28px;
+        font-size: 1.375em;
         margin: 0;
+        
+        @media only screen and (min-width: 640px) {
+            font-size: 1.75em;
+        } 
     }
 }
         
 .buttons {
     @include flex_column;
     margin-top: 20px;
+    max-width: 360px;
 }
+
+/* leaderboard-single styles */
+.leaderboard {
+    @media only screen and (orientation: portrait) {
+        display: none;
+    }
     
+    @media only screen and (orientation: landscape) {
+        @include leaderboard_orientation_size;
+    }
+    
+    @media only screen and (min-width: 640px) {
+        @include leaderboard_orientation_size;
+    }
+    
+    @media only screen and (min-width: 1025px) {
+        width: 700px;
+        position: relative;
+        padding: 25px;
+    }
+    
+    .win_window .container {
+        width: 500px;
+        @include flex_column;
+        align-items: center;
+        top: 50%;
+        
+        @media only screen and (min-width: 640px) and (orientation: portrait) {
+            top: 20%;
+        }
+        
+        @media only screen and (min-width: 1025px) {
+            top: 20%;
+        }
+    }
+    
+    & ~ p {
+        @media only screen and (orientation: portrait) {
+            display: inherit;
+            color: $white;
+            text-align: center;
+            width: 90%;
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            right: 0;
+            bottom: 0;
+            background: {
+                image: url(http://cdn.3dvista.com/kolter-plan-b/media/rotate.gif);
+                size: contain;
+                repeat: no-repeat;
+                position-y: 50%;
+            }
+        }
+        
+        @media only screen and (orientation: landscape) {
+            display: none;
+        }
+        
+        @media only screen and (min-width: 640px) {  
+            display: none;
+        }
+    }
+    
+    h2 {
+        text-align: center;
+        margin: 0;
+    }
+    
+    & > p {
+        text-align: center;
+        font-weight: normal;
+    }
+}
+
 .leaderboard_header {
     @include flex_row;
     height: 35px;
+    font-weight: bold;
     color: $background;
     background-color: $white;
     border-bottom: 2px solid $border;
@@ -399,22 +510,25 @@ img {
     align-items: center;
         
     &.one {
-        width: 80px;
+        min-width: 60px;
         justify-content: center;
     }
         
     &.two {
         width: 100%;
         display: flex;
-        padding: {
-            left: 20px;
-            right: 0;
-        }
+        padding-left: 20px;
         border-left: 2px solid $border;
     }
         
     &.three {
-        width: 100px;
+        min-width: 70px;
+        justify-content: center;
+        border-left: 2px solid $border;
+    }
+    
+    &.four {
+        min-width: 100px;
         justify-content: center;
         border-left: 2px solid $border;
     }
@@ -437,11 +551,61 @@ img {
     }
 }
 
-.leaderboard_multi {
-    display: none;
+/* Leaderboard styles for game-multi */
+.game > .win_window {
+    justify-content: flex-start;
+    z-index: 1;
+    
+    .leaderboard_header {
+        width: 90%;
+        margin-bottom: 3px;
+        border: none;
+        background-color: transparent;
+        
+        & > .col {
+            border: none;
+            background-color: $white;
+        }
+        
+        & > .col.two,
+        & > .col.three,
+        & > .col.four {
+            margin-left: 3px;
+        }
+        
+        & > .col > p {
+            font-size: 1em;
+            font-weight: bold;
+        }
+    }
+    
+    .player_field {
+        width: 90%;
+        margin-bottom: 3px;
+        border: none;
+        
+        & > .col {
+            border: none;
+        }
+        
+        & > .col.two,
+        & > .col.three,
+        & > .col.four {
+            margin-left: 3px;
+        }
+        
+        & > .col > p {
+            font-size: 1em;
+        }
+    }
 }
 
-
+@each $name, $color in $player_colors {
+    /* generate classes for game-multi leaderboard players */
+    .#{$name} {
+        background-color: $color;
+    }
+}
 
 
 

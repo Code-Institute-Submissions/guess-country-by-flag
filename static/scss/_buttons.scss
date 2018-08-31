@@ -1,5 +1,6 @@
 @import "variables";
 
+/* Mixins */
 @mixin btn($background-color) {
     display: flex;
     justify-content: center;
@@ -53,7 +54,7 @@ a.button_back {
         background-color: $green;
     }
                     
-    .submit {
+    .submit_answer {
         width: 100px;
         background-color: $blue;
     }
@@ -68,19 +69,43 @@ a.button_back {
             margin-bottom: 0;
         }
     }
-    
-    .buttons button {
-        @include btn($blue);
-        min: {
-            width: 280px;
-            height: 30px;
-        }
-        margin-bottom: 15px;
-    }
 }
 
+.buttons button {
+    @include btn($blue);
+    min: {
+        width: 280px;
+        height: 30px;
+    }
+    margin-bottom: 15px;
+}
 
 .button_text {
     color: $white;
     align-self: center
+}
+
+.icon_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    border: none;
+    color: $white;
+    background: none;
+    box-shadow: none;
+}
+
+.input_button {
+    color: $white;
+    background-color: $blue;
+        
+    &:first-of-type {
+        margin-bottom: 25px;
+    }
+        
+    &:nth-of-type(3) {
+        margin-top: 25px;
+    }
 }
