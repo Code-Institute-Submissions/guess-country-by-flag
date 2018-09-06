@@ -30,7 +30,11 @@ button {
   font-size: 1em;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.6); }
   button.button {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     font-weight: bold;
     text-decoration: none;
@@ -48,7 +52,11 @@ button {
     font-weight: bold; }
 
 a.button_back {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   font-weight: bold;
   text-decoration: none;
@@ -79,7 +87,11 @@ a.button_back {
       margin-bottom: 0; } }
 
 .buttons button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   font-weight: bold;
   text-decoration: none;
@@ -95,9 +107,18 @@ a.button_back {
   align-self: center; }
 
 .icon_btn, .player button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 25px;
   border: none;
@@ -161,8 +182,15 @@ body {
   background-position: center 30px;
   background-attachment: fixed;
   background-size: 300%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -187,6 +215,7 @@ body {
       margin: 25px 0; } }
 
 .game_title {
+  -ms-flex-item-align: center;
   align-self: center;
   margin-top: 0;
   margin-bottom: 0;
@@ -200,12 +229,21 @@ body {
   margin-top: 15px;
   margin-bottom: 25px;
   border: 0;
+  background-image: -webkit-linear-gradient(left, transparent, rgba(177, 177, 177, 0.85), transparent);
   background-image: linear-gradient(to right, transparent, rgba(177, 177, 177, 0.85), transparent); }
 
 /* For sign-in, sign-up, index, create-room, game-menu and add-players pages */
 .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center;
   padding-top: 25px;
   padding-bottom: 25px; }
@@ -234,8 +272,15 @@ body {
 
 /* add-players page */
 .player {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   height: 35px;
   width: 90%;
@@ -274,8 +319,16 @@ body {
 
 /* Common styles for game-single and game-multi */
 .game {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center;
   padding-top: 25px;
   padding-bottom: 25px;
@@ -289,12 +342,25 @@ body {
   width: 90%; }
 
 .row.two {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column; }
 
 .game_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center;
   font-weight: bold; }
   .game_header h2 {
@@ -302,12 +368,25 @@ body {
     margin-bottom: 0; }
 
 .row > .game_progress {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column; }
 
 .game_progress_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  -ms-grid-row-align: flex-end;
   align-items: flex-end;
   height: 50px;
   margin-bottom: 25px; }
@@ -319,7 +398,11 @@ body {
   height: 5px;
   width: 100%;
   background-color: #FBFBFB;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start; }
   .progress_bar .progressed {
     height: 100%;
@@ -377,8 +460,15 @@ body {
     width: 100%; }
 
 .game_score {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between; }
 
 img {
@@ -393,20 +483,34 @@ img {
   box-shadow: none; }
 
 .game_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
-  align-items: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  width: 100%;
   border: none;
   font-weight: bold;
   font-size: 1.25em; }
 
 .row.two > .incorrect_answers {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column; }
 
 .incorrect_answers {
-  align-items: center;
+  -ms-flex-item-align: center;
   align-self: center;
   word-break: break-all; }
   .incorrect_answers .heading {
@@ -443,7 +547,11 @@ img {
   color: #FBFBFB; }
 
 .game_progress_row .players {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   width: 100%; }
 
@@ -465,16 +573,23 @@ img {
       display: none; } }
   @media only screen and (orientation: landscape) {
     .multi > .win_window {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex; } }
   @media only screen and (min-width: 640px) {
     .multi > .win_window {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex; } }
   @media only screen and (min-width: 1025px) {
     .multi > .win_window {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
       position: inherit;
       width: 700px;
       left: 50%;
+      -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
       margin-top: -25px;
       margin-bottom: -15px; } }
@@ -504,8 +619,16 @@ img {
    For game-multi and leaderboard-single
 */
 .win_window {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center;
   position: fixed;
   top: 0;
@@ -519,6 +642,7 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
   .win_window p:first-child {
     font-size: 1.375em;
@@ -528,7 +652,12 @@ img {
         font-size: 1.75em; } }
 
 .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   margin-top: 20px;
   max-width: 360px; }
@@ -539,7 +668,12 @@ img {
     display: none; } }
 @media only screen and (orientation: landscape) {
   .leaderboard {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     color: #FBFBFB;
     width: 90%;
@@ -548,7 +682,12 @@ img {
     padding-top: 25px; } }
 @media only screen and (min-width: 640px) {
   .leaderboard {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     color: #FBFBFB;
     width: 90%;
@@ -562,8 +701,16 @@ img {
     padding: 25px; } }
 .leaderboard .win_window .container {
   width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center;
   top: 50%; }
   @media only screen and (min-width: 640px) and (orientation: portrait) {
@@ -601,7 +748,12 @@ img {
   font-weight: normal; }
 
 .leaderboard_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   height: 35px;
   font-weight: bold;
@@ -610,29 +762,52 @@ img {
   border-bottom: 2px solid #658080; }
 
 .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
   align-items: center; }
   .col.one {
     min-width: 60px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center; }
   .col.two {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding-left: 20px;
     border-left: 2px solid #658080; }
   .col.three {
     min-width: 70px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border-left: 2px solid #658080; }
   .col.four {
     min-width: 100px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border-left: 2px solid #658080; }
 
 .player_field {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   height: 35px;
   color: #FBFBFB;
@@ -646,6 +821,8 @@ img {
 
 /* Leaderboard styles for game-multi */
 .game > .win_window {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   z-index: 1; }
   .game > .win_window .leaderboard_header {

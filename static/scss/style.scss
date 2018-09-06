@@ -3,13 +3,23 @@
 
 /* Mixins */
 @mixin flex_row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+        flex-direction: row;
 }
 
 @mixin flex_column {
-    display: flex;
-    flex-direction: column;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
 }
 
 @mixin leaderboard_orientation_size {
@@ -38,7 +48,9 @@ body {
     }
     
     @include flex_row;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     font: {
         family: 'Roboto', sans-serif;
         size: 16px; 
@@ -64,7 +76,8 @@ body {
 }
 
 .game_title {
-    align-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
     margin: {
         top: 0;
         bottom: 0; 
@@ -82,13 +95,17 @@ body {
         bottom: 25px;
     }
     border: 0;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(177, 177, 177, 0.85), rgba(0, 0, 0, 0));
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(177, 177, 177, 0.85), rgba(0, 0, 0, 0));
 }
 
 /* For sign-in, sign-up, index, create-room, game-menu and add-players pages */
 .nav {
     @include flex_column;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
     padding: {
         top: 25px;
         bottom: 25px;
@@ -127,9 +144,16 @@ body {
 
 /* add-players page */       
 .player {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 35px;
     width: 90%;
     max-width: 360px;
@@ -163,9 +187,11 @@ body {
 
 /* Common styles for game-single and game-multi */
 .game {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex_column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
     padding: {
         top: 25px;
         bottom: 25px;
@@ -188,7 +214,10 @@ body {
 
 .game_header {
     @include flex_column;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
     font-weight: bold;
             
     h2 {
@@ -200,13 +229,21 @@ body {
 }
 
 .row > .game_progress {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .game_progress_row {
     @include flex_row;
-    justify-content: space-between;
-    align-items: flex-end;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+                -ms-grid-row-align: flex-end;
+            align-items: flex-end;
     height: 50px;
     margin-bottom: 25px;
             
@@ -220,8 +257,12 @@ body {
     height: 5px;
     width: 100%;
     background-color: $white;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
                 
     .progressed {
         height: 100%;
@@ -245,7 +286,9 @@ body {
 
 .game_score {
     @include flex_row;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 img {
@@ -264,8 +307,12 @@ img {
         
 .game_buttons {
     @include flex_row;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-item-align: center;
+        align-self: center;
+    width: 100%;
     border: none;
     font: {
         weight: bold;
@@ -278,8 +325,8 @@ img {
 }
         
 .incorrect_answers {
-    align-items: center;
-    align-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
     word-break: break-all;
             
     .heading {
@@ -308,8 +355,12 @@ img {
 }
 
 .game_progress_row .players {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     width: 100%;
 }
 
@@ -337,17 +388,24 @@ img {
         }
         
         @media only screen and (orientation: landscape) {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
         }
         
         @media only screen and (min-width: 640px) {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
         }
         @media only screen and (min-width: 1025px) {
+            -webkit-box-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
             position: inherit;
             width: 700px;
             left: 50%;
+            -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
             margin: {
                 top: -25px;
@@ -389,7 +447,10 @@ img {
 */
 .win_window {
     @include flex_column;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -403,7 +464,8 @@ img {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     }
     p:first-child {
         font-size: 1.375em;
@@ -444,7 +506,10 @@ img {
     .win_window .container {
         width: 500px;
         @include flex_column;
-        align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
         top: 50%;
         
         @media only screen and (min-width: 640px) and (orientation: portrait) {
@@ -506,16 +571,25 @@ img {
     
 .col {
     @include flex_row;
-    justify-content: flex-start;
-    align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+                -ms-grid-row-align: center;
+            align-items: center;
         
     &.one {
         min-width: 60px;
-        justify-content: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     }
         
     &.two {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         padding-left: 20px;
         border-left: 2px solid $border;
@@ -523,13 +597,17 @@ img {
         
     &.three {
         min-width: 70px;
-        justify-content: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
         border-left: 2px solid $border;
     }
     
     &.four {
         min-width: 100px;
-        justify-content: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
         border-left: 2px solid $border;
     }
 }
@@ -553,7 +631,9 @@ img {
 
 /* Leaderboard styles for game-multi */
 .game > .win_window {
-    justify-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     z-index: 1;
     
     .leaderboard_header {
