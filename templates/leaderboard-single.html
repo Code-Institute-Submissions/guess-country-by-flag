@@ -41,16 +41,24 @@
             {% for player in top_ten %}
                 {% if player.username == username %}
                 <!-- If player exists on the leaderboard and is currently on the page, highlight 
-                     that player -->
-                    <div class="player_field highlight">
-                        <div class="col one"><p>{{ player.rank }}</p></div>
-                        <div class="col two"><p>{{ player.username }}</p></div>
-                        <div class="col three"><p>{{ player.score }}</p></div>
-                        <div class="col four"><p>{{ list_of_times[loop.index - 1] }}</p></div>
-                    </div>
+                     that player. Last player field has no bottom border. -->
+                    {% if loop.last %}
+                        <div class="player_field last highlight">
+                            <div class="col one"><p>{{ player.rank }}</p></div>
+                            <div class="col two"><p>{{ player.username }}</p></div>
+                            <div class="col three"><p>{{ player.score }}</p></div>
+                            <div class="col four"><p>{{ list_of_times[loop.index - 1] }}</p></div>
+                        </div>
+                    {% else %}
+                        <div class="player_field highlight">
+                            <div class="col one"><p>{{ player.rank }}</p></div>
+                            <div class="col two"><p>{{ player.username }}</p></div>
+                            <div class="col three"><p>{{ player.score }}</p></div>
+                            <div class="col four"><p>{{ list_of_times[loop.index - 1] }}</p></div>
+                        </div>
+                    {% endif %}
                 {% else %}
                     {% if loop.last %}
-                    <!-- Last player field has no bottom border -->
                         <div class="player_field last">
                             <div class="col one"><p>{{ player.rank }}</p></div>
                             <div class="col two"><p>{{ player.username }}</p></div>
