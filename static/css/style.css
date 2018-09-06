@@ -49,7 +49,8 @@ button {
     width: 100px;
     height: 30px;
     background-color: #F03A47;
-    font-weight: bold; }
+    font-weight: bold;
+    cursor: pointer; }
 
 a.button_back {
   display: -webkit-box;
@@ -74,10 +75,12 @@ a.button_back {
   font-weight: bold; }
 .game_buttons .skip {
   width: 80px;
-  background-color: #80b954; }
+  background-color: #80b954;
+  cursor: pointer; }
 .game_buttons .submit_answer {
   width: 100px;
-  background-color: #3e92cc; }
+  background-color: #3e92cc;
+  cursor: pointer; }
 
 .leaderboard .button_back {
   width: 100%;
