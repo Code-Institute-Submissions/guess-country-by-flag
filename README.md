@@ -1,6 +1,6 @@
 # Guess The Flag game
 
- A `form` based "riddle me this" game where players are presented with an image of a random flag and have to
+ A "riddle me this" based game where players are presented with an image of a random flag and have to
  guess which country it belongs to.
  
  ## Features
