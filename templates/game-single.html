@@ -19,10 +19,10 @@
                 <p class="points">Remaining points: {{ round_points }}</p>
             </div>
         </div>
-        <img src="{{ flag_url }}">
+        <img src="{{ flag_url }}" alt="current-flag">
         
         <div class="row two">
-            <input type="textarea" class="answer_field" name="answer" autocomplete="off" required/>
+            <input type="text" class="answer_field" name="answer" autocomplete="off" required/>
             <div class="game_buttons">
                 <button class="skip hvr-grow" name="skip" formnovalidate>Skip</button>
                 <button class="submit_answer hvr-grow" name="answer">Submit</button>

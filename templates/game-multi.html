@@ -121,24 +121,24 @@
             <div class="game_score">
                 {% if turn_of_player == 0 %}
                 <!-- Set different text color for each player -->
-                    <p id="blue_text" class="score">Score: {{ player_score }}</p>
+                    <p class="score blue_text">Score: {{ player_score }}</p>
                 {% elif turn_of_player == 1 %}
-                    <p id="green_text" class="score">Score: {{ player_score }}</p>
+                    <p class="score green_text">Score: {{ player_score }}</p>
                 {% elif turn_of_player == 2 %}
-                    <p id="yellow_text" class="score">Score: {{ player_score }}</p>
+                    <p class="score yellow_text">Score: {{ player_score }}</p>
                 {% elif turn_of_player == 3 %}
-                    <p id="red_text" class="score">Score: {{ player_score }}</p>
+                    <p class="score red_text">Score: {{ player_score }}</p>
                 {% elif turn_of_player == 4 %}
-                    <p id="purple_text" class="score">Score: {{ player_score }}</p>
+                    <p class="score purple_text">Score: {{ player_score }}</p>
                 {% else %}
                     <p class="score">Score: {{ player_score }}</p>
                 {% endif %}
                 <p class="points">Remaining points: {{ points }}</p>
             </div>
         </div>
-        <img src="{{ flag_url }}">
+        <img src="{{ flag_url }}" alt="current-flag">
         <div class="row two">
-            <input type="textarea" class="answer_field" name="answer" required/>
+            <input type="text" class="answer_field" name="answer" required/>
             <div class="game_buttons">
                 <button class="skip hvr-grow" name="skip" formnovalidate>Skip</button>
                 <button class="submit_answer hvr-grow" name="answer">Submit</button>
@@ -148,15 +148,15 @@
                 <!-- Only display if the list contains an element -->
                     {% if turn_of_player == 0 %}
                     <!-- Set different text color for each player -->
-                        <h4 id="blue_text" class="heading">Incorrect answer(s)</h4>
+                        <h4 class="heading blue_text">Incorrect answer(s)</h4>
                     {% elif turn_of_player == 1 %}
-                        <h4 id="green_text" class="heading">Incorrect answer(s)</h4>
+                        <h4 class="heading green_text">Incorrect answer(s)</h4>
                     {% elif turn_of_player == 2 %}
-                        <h4 id="yellow_text" class="heading">Incorrect answer(s)</h4>
+                        <h4 class="heading yellow_text">Incorrect answer(s)</h4>
                     {% elif turn_of_player == 3 %}
-                        <h4 id="red_text" class="heading">Incorrect answer(s)</h4>
+                        <h4 class="heading red_text">Incorrect answer(s)</h4>
                     {% elif turn_of_player == 4 %}
-                        <h4 id="purple_text" class="heading">Incorrect answer(s)</h4>
+                        <h4 class="heading purple_text">Incorrect answer(s)</h4>
                     {% else %}
                         <h4 class="heading">Incorrect answer(s)</h4>
                     {% endif %}

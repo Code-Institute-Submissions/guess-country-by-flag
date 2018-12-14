@@ -520,7 +520,23 @@ img {
   .incorrect_answers .heading {
     margin-bottom: 10px;
     font-size: 1.125em;
-    color: #F03A47; }
+    color: #F03A47;
+    text-align: center;
+    /* Generate class selectors for different colors for game-multi page */
+    /* Generate class selectors for different colors for game-multi page */
+    /* Generate class selectors for different colors for game-multi page */
+    /* Generate class selectors for different colors for game-multi page */
+    /* Generate class selectors for different colors for game-multi page */ }
+    .incorrect_answers .heading.blue_text {
+      color: #3e92cc; }
+    .incorrect_answers .heading.green_text {
+      color: #80b954; }
+    .incorrect_answers .heading.yellow_text {
+      color: #ffd966; }
+    .incorrect_answers .heading.red_text {
+      color: #F03A47; }
+    .incorrect_answers .heading.purple_text {
+      color: #8e7cc3; }
   .incorrect_answers .answer {
     margin: 0;
     margin-bottom: 15px;
@@ -549,6 +565,26 @@ img {
 
 #white_text {
   color: #FBFBFB; }
+
+/* Generate class selectors for different colors for game-multi page */
+.blue_text {
+  color: #3e92cc; }
+
+/* Generate class selectors for different colors for game-multi page */
+.green_text {
+  color: #80b954; }
+
+/* Generate class selectors for different colors for game-multi page */
+.yellow_text {
+  color: #ffd966; }
+
+/* Generate class selectors for different colors for game-multi page */
+.red_text {
+  color: #F03A47; }
+
+/* Generate class selectors for different colors for game-multi page */
+.purple_text {
+  color: #8e7cc3; }
 
 .game_progress_row .players {
   display: -webkit-box;

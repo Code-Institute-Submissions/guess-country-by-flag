@@ -333,6 +333,14 @@ img {
         margin-bottom: 10px;
         font-size: 1.125em;
         color: $red;
+        text-align: center;
+        
+        @each $name, $color in $player_colors {
+            /* Generate class selectors for different colors for game-multi page */
+            &.#{$name}_text {
+                color: $color;
+            }
+        }
     }
             
     .answer {
@@ -352,6 +360,13 @@ img {
 
 #white_text {
     color: $white;
+}
+
+@each $name, $color in $player_colors {
+    /* Generate class selectors for different colors for game-multi page */
+    .#{$name}_text {
+        color: $color;
+    }
 }
 
 .game_progress_row .players {

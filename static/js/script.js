@@ -18,7 +18,7 @@ $(document).ready(function() {
                 $(this).css("background-color", color2);
             }
         });
-    };
+    }
     
     background_change("#72AFD9", "#3e92cc", ".input_button, .play_again, .continue, .submit");
     background_change("#F2A56B", "#ee8434", ".button_back");
