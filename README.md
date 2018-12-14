@@ -80,6 +80,32 @@ the right solutions and I would update them on the go.
 * A local, non-persistent leaderboard for multiplayer mode where players can see how they ranked against each other 
   at the end of the game.
 
+<<<<<<< HEAD
+=======
+ A "riddle me this" based game where players are presented with an image of a random flag and have to
+ guess which country it belongs to.
+ 
+ ## Features
+ 
+ * 2 game modes:
+    * Single player cosisting of 20 levels(or flags).
+    * Local multiplayer where up to 5 players can play against each other for 5 rounds, each player 
+      having a single turn per round. Multiplayer games older than a day are automatically deleted from data.
+ * A scoring system with 5 initial points per level/turn. Points are reduced by 2 for each incorrect
+   answer, resulting in 0 points after 3 incorrect answers. Full amount of points has to be scored in order 
+   to win the game.
+ * Logging and displaying incorrect answers for level being played.
+ * Abillity to skip questions in the event of not knowing the correct answer resulting in 0 points being scored
+   for that level/turn.
+ * Ability to give up/quit the game early resulting in not being placed on the leaderboard.
+ * 200 flags of sovereign states
+ * Persistent user accounts with players being able to choose their username and password.
+ * A global, persistent leaderboard visible to all players in single player mode. Position on the leaderboard is
+   decided by total score at the end of the game as well as total time played.
+ * A local, non-persistent leaderboard for multiplayer mode where players can see how they ranked against each other 
+   at the end of the game.
+ 
+>>>>>>> 0216f9eb6016ca7a8a49470affa0fa3fe5b1b3e0
 ## Technologies
 
 * [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
