@@ -54,7 +54,7 @@ turn, then the round is incremented. Overall, each player gets to guess 5 flags 
 * Once players finish the game they can play another game or quit to the game mode selection page.
 * The 'give up' button is removed to prevent players from leaving while the game is ongoing.
 
-Mockups in a pdf format and user stories can be found here [UX assets](assets/ux)
+Mockups in a pdf format and user stories can be found here [UX assets](static/ux)
 
 The final version of the project differs from the mockups. 
 As I developed the project I would realize that some of the design decisions weren't 
@@ -222,6 +222,8 @@ and in different browsers(Firefox, Microsoft Edge and Google Chrome) to test bro
 Python logic extensively tested with unittest, a python unit testing framework. All tests pass. They can be found at [Unit Tests](tests/) and are split into 
 multiple files for better readability.
 
+* To run all tests, in the terminal type in `python3 -m unittest`
+
 Additionally:
 
 * [W3C Markup Validation Service](https://validator.w3.org/)
@@ -242,15 +244,21 @@ name supplied will be taken. Solved by deleting any game rooms that are older th
 
 Deployed on Heroku at [Guess The Flag](https://guess-the-country-by-flag.herokuapp.com/).
 
-Clone the repository by copying the clone url
-
-In the terminal type `git clone` followed by the copied url
-
-`cd` into `guess-the-flag`, in the terminal type `pip3 install -r requirements.txt` to install all the dependencies then open
-`app.py`
-
-
-To run all tests, in the terminal type in `python3 -m unittest`
+* Clone the repository by copying the clone url
+* In the terminal type `git clone` followed by the copied url
+* `cd` into `guess-the-flag`
+* In the terminal type `pip3 install -r requirements.txt` to install all the dependencies 
+* Create an account on Heroku if you don't have one yet and create a new app
+* In the terminal, type `echo "web: python main.py" > Procfile`
+* `heroku login`
+* `git init` to create a new repository
+* `heroku git:remote -a (name of your heroku app, no brackets)`
+* `git add .`
+* `git commit -m "Initial commit"`
+* `git push heroku master`
+* `heroku ps:scale web=1`
+* In your heroku app navigate to settings and reveal config vars, set IP = 0.0.0.0, PORT = 5000
+* Restart all dynos and open your heroku app
 
 ## Credits
 
