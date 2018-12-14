@@ -105,10 +105,6 @@ the right solutions and I would update them on the go.
 * [Markdown](https://en.wikipedia.org/wiki/Markdown)
   * Used for formatting user_stories.md and README.md
 
-## Deployment 
-
-Deployed on Heroku at [Guess The Flag](https://guess-the-country-by-flag.herokuapp.com/).
-
 ## Testing 
 
 ### Manual Tests
@@ -242,7 +238,9 @@ Additionally:
 * Once a room is created, if a user return to the create-room page, the room created before that will not be deleted and the
 name supplied will be taken. Solved by deleting any game rooms that are older than a day so as not to keep storing them unnecessarily.
 
-## Installation 
+## Deployment 
+
+Deployed on Heroku at [Guess The Flag](https://guess-the-country-by-flag.herokuapp.com/).
 
 Clone the repository by copying the clone url
 
